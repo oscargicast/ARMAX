@@ -1,0 +1,128 @@
+# de muestras
+   300
+
+
+
+					 ARMAX(3, 1, 1, 1)
+===========================================================
+D =
+ 
+               0.01291
+  ----------------------------------
+  z^3 - 2.322 z^2 + 1.799 z - 0.4562
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 2.322 z^-1 + 1.799 z^-2 - 0.4562 z^-3        
+                                                          
+  B(z) = 0.01291 z^-1                                     
+                                                          
+  C(z) = 1 - 0.9559 z^-1                                  
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=3   nb=1   nc=1   nk=1
+   Number of free coefficients: 5
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 96.36% (prediction focus) 
+FPE: 2.681e-05, MSE: 2.577e-05                    
+
+Gs =
+ 
+    0.2564 s^2 - 22.37 s + 700.6
+  --------------------------------
+  s^3 + 26.16 s^2 + 199.4 s + 1124
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(2, 2, 2, 2)
+===========================================================
+D =
+ 
+   0.006472 z + 0.02025
+  ----------------------
+  z^2 - 1.791 z + 0.8357
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 1.791 z^-1 + 0.8357 z^-2                     
+                                                          
+  B(z) = 0.006472 z^-2 + 0.02025 z^-3                     
+                                                          
+  C(z) = 1 - 1.119 z^-1 + 0.5204 z^-2                     
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=2   nb=2   nc=2   nk=2
+   Number of free coefficients: 6
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 96.85% (prediction focus) 
+FPE: 1.744e-05, MSE: 1.934e-05                    
+
+Gs =
+ 
+    -0.2677 s + 32.57
+  ---------------------
+  s^2 + 5.981 s + 55.06
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(2, 2, 1, 1)
+===========================================================
+D =
+ 
+   -0.01242 z + 0.03931
+  ----------------------
+  z^2 - 1.779 z + 0.8241
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 1.779 z^-1 + 0.8241 z^-2                     
+                                                          
+  B(z) = -0.01242 z^-1 + 0.03931 z^-2                     
+                                                          
+  C(z) = 1 - 0.7407 z^-1                                  
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=2   nb=2   nc=1   nk=1
+   Number of free coefficients: 5
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 96.66% (prediction focus) 
+FPE: 2.196e-05, MSE: 2.171e-05                    
+
+Gs =
+ 
+     -0.9722 s + 33
+  ---------------------
+  s^2 + 6.451 s + 54.75
+ 
+Continuous-time transfer function.

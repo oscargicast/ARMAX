@@ -4,10 +4,15 @@ line_widht = 1.5;
 %% Toolbox de identificacion mediante comandos Matlab
 %% DATA experimental proviene desde el circuito 3 Opams
 % OPAMS
-data = load('data/data_step.lvm');
+data = load('data/data_gate.lvm');
 y = data(:, 4);
 u = data(:, 6);
-back = data(:,2);
+
+figure; hold on;
+plot(y, 'r', 'LineWidth', line_widht);
+plot(u, 'b', 'LineWidth', line_widht);
+ylabel('Amplitud(volts)'), xlabel('N(samples)')
+legend('y_{exp}', 'u_{exp}')
 
 N = length(u);
 disp('# de muestras'), disp(N);
@@ -50,18 +55,11 @@ P = tf(Numer, Denom);
 
 yt = lsim(P, u, t);
 
+back = data(:,2);
 
+figure; hold on;
 % teorica
-figure; hold on;
-plot(y, 'r', 'LineWidth', line_widht);
-plot(yt, 'k--', 'LineWidth', line_widht);
-plot(back, 'g--', 'LineWidth', line_widht);
-plot(u, 'b', 'LineWidth', line_widht);
-
-ylabel('Amplitude(volts)'), xlabel('N(samples)')
-legend('y_{exp}', 'y_{teo}', 'y_{back}', 'u_{exp}')
-
-figure; hold on;
+plot(t, yt, 'g', 'LineWidth', line_widht);
 % experimental
 plot(t, y, 'r', 'LineWidth', line_widht);
 
@@ -77,12 +75,9 @@ nn = [
     2 2 2 2; 
     2 2 1 1; 
 ];
-colors = ['k', 'g', 'b'];
+colors = ['k', 'm', 'b', 'g'];
 size_n=size(nn);
 for i=1:size_n(1)
-fprintf('\n\n\t\t\t\t\t ARMAX(%d, %d, %d, %d)', nn(i,1), nn(i,2), nn(i,3), nn(i,4)); 
-fprintf('\n==========================================================='); 
-    
 th = armax(idata, [nn(i,1), nn(i,2), nn(i,3), nn(i,4)]);
 % B numerador, A denominador
 % FPE(funcion de prediccion de error)
@@ -90,9 +85,9 @@ th = armax(idata, [nn(i,1), nn(i,2), nn(i,3), nn(i,4)]);
 
 %% 3rd discreta - funcion de transerencia D(z)
 D = tf(th.b, th.a, Ts);
-D
 % De = tf(th.c, th.a, Ts);
 % cmd: d2c
+disp(nn(i,:));
 th
 
 %% 4th Funcion de transferencia G(s)
@@ -102,7 +97,6 @@ th
 
 [n, d] = tfdata(D, 'v'); 
 Gs = d2c(D, 'zoh');
-Gs
 
 yc = lsim(Gs, u, t);
 
@@ -111,9 +105,7 @@ plot(t, yc, strcat(colors(i), '--') , 'LineWidth', line_widht);
 % legend(colors(i))
 end
 
-ylabel('Amplitude(volts)'), xlabel('t(sec.)');
-legend( ...
-'y_{exp}', ...
+legend('y_{teo}', 'y_{exp}', ...
 arrayfun(@num2str, nn(3,:), 'UniformOutput', true), ...
 arrayfun(@num2str, nn(2,:), 'UniformOutput', true), ...
 arrayfun(@num2str, nn(1,:), 'UniformOutput', true));

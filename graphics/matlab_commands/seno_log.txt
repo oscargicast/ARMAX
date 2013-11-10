@@ -1,0 +1,137 @@
+# de muestras
+   300
+
+
+
+					 ARMAX(3, 1, 1, 1)
+===========================================================
+D =
+ 
+                0.02971
+  -----------------------------------
+  z^3 - 1.372 z^2 + 0.1021 z + 0.3173
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 1.372 z^-1 + 0.1021 z^-2 + 0.3173 z^-3       
+                                                          
+  B(z) = 0.02971 z^-1                                     
+                                                          
+  C(z) = 1 - 0.5535 z^-1                                  
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=3   nb=1   nc=1   nk=1
+   Number of free coefficients: 5
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 98.76% (prediction focus) 
+FPE: 2.786e-05, MSE: 2.677e-05                    
+Warning: The model order was increased to handle real negative poles. 
+> In warning at 26
+  In ssdata.utInvDiscretize at 74
+  In ssdata.d2c at 23
+  In tfdata.d2c at 39
+  In SystemArray>SystemArray.d2c_ at 449
+  In tf.tf>tf.d2c_ at 768
+  In DynamicSystem.d2c at 99
+  In compare_structures at 104 
+
+Gs =
+ 
+     -0.6776 s^3 + 115.5 s^2 - 1.006e04 s + 3.153e05
+  ------------------------------------------------------
+  s^4 + 69.15 s^3 + 1.242e04 s^2 + 9.043e04 s + 5.047e05
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(2, 2, 2, 2)
+===========================================================
+D =
+ 
+  -0.004941 z + 0.03763
+  ----------------------
+  z^2 - 1.747 z + 0.7994
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 1.747 z^-1 + 0.7994 z^-2                     
+                                                          
+  B(z) = -0.004941 z^-2 + 0.03763 z^-3                    
+                                                          
+  C(z) = 1 - 1.288 z^-1 + 0.4223 z^-2                     
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=2   nb=2   nc=2   nk=2
+   Number of free coefficients: 6
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 98.55% (prediction focus) 
+FPE: 2.06e-05, MSE: 3.639e-05                     
+
+Gs =
+ 
+   -0.8226 s + 40.74
+  --------------------
+  s^2 + 7.464 s + 65.2
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(2, 2, 1, 1)
+===========================================================
+D =
+ 
+   -0.02485 z + 0.05751
+  ----------------------
+  z^2 - 1.725 z + 0.7772
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 1.725 z^-1 + 0.7772 z^-2                     
+                                                          
+  B(z) = -0.02485 z^-1 + 0.05751 z^-2                     
+                                                          
+  C(z) = 1 - 0.945 z^-1                                   
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=2   nb=2   nc=1   nk=1
+   Number of free coefficients: 5
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 98.81% (prediction focus) 
+FPE: 2.47e-05, MSE: 2.462e-05                     
+
+Gs =
+ 
+    -1.595 s + 41.26
+  ---------------------
+  s^2 + 8.403 s + 66.02
+ 
+Continuous-time transfer function.
