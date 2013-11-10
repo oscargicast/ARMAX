@@ -1,10 +1,15 @@
 clear all; close all; clc;
 line_widht = 1.5;
 
+%% Input
+data_type = input('signal(gate/step/seno/rampa): ', 's');
+validatestring(data_type, {'gate', 'step', 'seno', 'rampa'})
+file = strcat('data/data_', data_type, '.lvm');
+data = load(file);
+
 %% Toolbox de identificacion mediante comandos Matlab
 %% DATA experimental proviene desde el circuito 3 Opams
 % OPAMS
-data = load('data/data_step.lvm');
 y = data(:, 4);
 u = data(:, 6);
 back = data(:,2);
@@ -71,13 +76,14 @@ plot(t, y, 'r', 'LineWidth', line_widht);
 Ts = 0.03; 
 idata = iddata(y, u, Ts);
 
-%% 2nd Estructura parametrica ARX(na, nb, nx=nc)
+%% 2nd Estructura parametrica ARMAX(na, nb, nc, nx)
 nn = [
     3 1 1 1; 
     2 2 2 2; 
-    2 2 1 1; 
+    2 2 1 1;
+    1 1 1 1;
 ];
-colors = ['k', 'g', 'b'];
+colors = ['k', 'g', 'b', 'm'];
 size_n=size(nn);
 for i=1:size_n(1)
 fprintf('\n\n\t\t\t\t\t ARMAX(%d, %d, %d, %d)', nn(i,1), nn(i,2), nn(i,3), nn(i,4)); 
@@ -114,6 +120,7 @@ end
 ylabel('Amplitude(volts)'), xlabel('t(sec.)');
 legend( ...
 'y_{exp}', ...
+arrayfun(@num2str, nn(4,:), 'UniformOutput', true), ...
 arrayfun(@num2str, nn(3,:), 'UniformOutput', true), ...
 arrayfun(@num2str, nn(2,:), 'UniformOutput', true), ...
 arrayfun(@num2str, nn(1,:), 'UniformOutput', true));

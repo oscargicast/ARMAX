@@ -1,18 +1,23 @@
 clear all; close all; clc;
 line_widht = 1;
 
+%% Input
+data_type = input('signal(gate/step/seno/rampa): ', 's');
+validatestring(data_type, {'gate', 'step', 'seno', 'rampa'})
+file = strcat('data/data_', data_type, '.lvm');
+data = load(file);
+
 %% Toolbox de identificacion mediante comandos Matlab
 %% DATA experimental proviene desde el circuito 3 Opams
 % OPAMS
-data = load('data/data_seno.lvm');
 y = data(:, 4);
 u = data(:, 6);
 
 subplot(211);
-plot(y, 'r'), ylabel('Amplitud')
+plot(y, 'r'), ylabel('Amplitude(volts)')
 
 subplot(212);
-plot(u, 'k'), ylabel('Amplitud'), xlabel('N(muestras)')
+plot(u, 'k'), ylabel('Amplitude(volts)'), xlabel('N(samples)')
 
 N = length(u);
 disp('# de muestras'), disp(N)
@@ -75,8 +80,7 @@ plot(t, y, 'r', 'LineWidth', line_widht);
 Ts = 1/30; 
 idata = iddata(y, u, Ts);
 
-%% 2nd Estructura parametrica ARX(na, nb, nx=nc)
-% na = 2; nb = 2; nc = 2; nk = 1;
+%% 2nd Estructura parametrica ARMAX(na, nb, nc, nx)
 na = 3; nb = 2; nc = 1; nk = 1;
 
 % th = arx(idata, [na, nb, nc]);
@@ -88,12 +92,10 @@ th
 
 %% 3rd discreta - funcion de transerencia D(z)
 D = tf(th.b, th.a, Ts)
-De = tf(th.c, th.a, Ts)
 % cmd: d2c
 
 %% 4th Funcion de transferencia G(s)
 Gs = d2c(D, 'zoh');
-Ge = d2c(De, 'zoh');
 disp('funcion de trans'), Gs
 
 % % Son diferentes Gs y G: th2th es obsoleta
@@ -105,16 +107,11 @@ disp('funcion de trans'), Gs
 [n, d] = tfdata(D, 'v'); 
 Gs = d2c(D, 'zoh');
 
-% white noise
-e = wgn(1,N,0);
-
 yc = lsim(Gs, u, t);
-ye = lsim(Ge, 0.001*e, t);
-plot(t, yc+ye, 'b', 'LineWidth', line_widht);
+plot(t, yc, 'b', 'LineWidth', line_widht);
 
 legend('y_{teo}', 'y_{exp}', 'y_{iden}', 4);
-
-
+ylabel('Amplitude(volts)'), xlabel('t(sec.)')
 
 %% Indentificaision usando GUIDE
 % ident
