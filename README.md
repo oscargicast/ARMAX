@@ -21,10 +21,22 @@ nn = [
     2 2 1 1;
     1 1 1 1;
 ];
-If you want to change one structure just change a row.
+If you want to change one structure just change a row. We enter the model 
+to compare and *vuala!*:
 ```matlab
 >> compare_structures
+signal(gate/step/seno/rampa): seno
+...
 ```
+
+To validate all the identified models against a GATE input. Running the 
+script we have to enter the ARMAX parameters.
+```matlab
+>> gate_for_all_identified_models
+ARMAX(na,nb,nc,nk): [2 2 1 1]
+....
+```
+
 
 MATLAB GUIDE
 ------------
