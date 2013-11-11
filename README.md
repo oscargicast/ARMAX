@@ -35,7 +35,7 @@ MATLAB GUIDE
 
 LABVIEW WORKBENCH
 -----------------
-The data generated is on the file:
+The data is generated on the file:
 ```
 data/labview_sim_data
 ```

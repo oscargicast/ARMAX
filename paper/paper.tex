@@ -1,0 +1,99 @@
+\documentclass[twocolumn]{IEEEtran}
+
+\usepackage[ansinew]{inputenc} 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{longtable}               
+\usepackage{fancyhdr}
+\usepackage{times}
+\usepackage{color}                   
+\usepackage{makeidx}                 
+\usepackage{cite}
+\usepackage{float}
+\setcounter{page}{1}
+
+\begin{document}
+
+\title{Identificación de una planta de 3 Opams (sistema de tercer orden) utilizando la estructura paramétrica ARMAX.}
+
+
+\author{Autores \\ 
+				Estrada Vidal, Jorge  \textcolor{blue}{jor1550g@gmail.com} \\
+				Florian Chacon, Erick  \textcolor{blue}{erick.florian.uni@gmail.com} \\
+				Giraldo Castillo, Oscar \textcolor{blue}{oscar.gi.cast@gmail.com} \\ 		
+				\vspace{4 mm}
+				Asesores: \\
+				Ing. Rodriguez Bustinza, Ricardo \textcolor{blue}{robust@uni.edu.pe} \\ 	
+				
+				\vspace{8 mm}
+				\emph{Universidad Nacional de Ingenier\'ia}
+		}			
+
+		
+		
+%\markboth{IEEE Trans...}{Murray and Balemi: ...}
+\maketitle
+
+
+
+
+
+\section{OBJETIVOS} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+$\big(t\big) + a_{1} y \big(t-1\big)$
+
+\PARstart{E}{l} Consejo Nacional para la Integración de la Persona con Discapacidad (CONADIS \cite{uno}) es un organismo público que conjuntamente con el INEI realizó en el 2008 un censo nacional mostrando que del total de inscritos en el Registro Nacional por tipo de limitación, la mayor parte de de ellas es de locomoción con 26 106, seguida por destreza con 25 765 del total de personas registradas en el Perú (ver Fig. ~\ref{tabla1}). Por lo cual, pensamos que la tecnificación mediante métodos de \textbf{bioingeniería} de bajo costo aplicados en los campos de terapia física  por medio de videojuegos son necesarios para detener el crecimiento de la población con limitaciones motrices de bajos recursos. Por ello, haciendo uso de las gran gamma de sensores de bajo costo que hoy en día nos brinda un smartphone (tales como giroscopio, acelerómetro y giroscopio. Ver Fig. ~\ref{PhoneMotion}) daremos solución a esta problematica.
+
+
+
+
+\section{MARCO TEÓRICO}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{PRESENTACIÓN DE RESULTADOSS} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Hoy en día, el costo de los smartphones es cada vez menor. Esto facilita la adquisición de uno y por lo tanto el alcance de nuestra interfaz, ya que esta es compatible con cualquier dispositivo con el sistema operativo Android. Además, actualmente los smartwatch (basados en la misma tecnología que los smartphone) se vienen desarrollando y prometen ser un boom principalmente por su potabilidad, sin embargo no los empleamos en nuestra aplicación ya que aun no cuentan con todos los sensores necesarios para el reconocimiento de movimientos que deseamos realizar. A pesar de ello, esto no es un problema puesto que el software que realizaremos en esencia no cambia, y podría ser implementado en un smartwatch, o en hardware propio el cual desarrollaremos según el segmento de mercado que queramos ocupar. 
+
+
+\section{CONCLUSIONES} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item La proyección de ángulos a la pantalla es de forma nolineal por realizarse radialmente, es por ello que en una primera etada del proyecto se presentaban pequeños saltos en la proyección del puntero, ya que habiamos considerado una transformación del tipo lineal.
+	
+ 	\item Comunicacion PC-Smartphone vía TCP/IP. (ver Fig. ~\ref{tcp}) 
+ 	
+\end{itemize}
+
+
+\bibliographystyle{IEEE} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nocite{*}
+\bibliographystyle{IEEE}
+
+\begin{thebibliography}{1}
+
+\bibitem{uno}
+Ministerio de Salud, Perú
+\newblock {\em REGISTRO NACIONAL DISCAPACIDAD EN CIFRAS}
+\newblock CONADIS-INEI 2008
+
+\bibitem{git}
+bitbucket.org
+\newblock {\em http://git-scm.com/}
+\newblock 
+
+\bibitem{bitbucket}
+bitbucket.org
+\newblock {\em https://bitbucket.org/jorgenro/proyecto-mecatronico}
+\newblock Repositorio privado
+
+\end{thebibliography}
+
+
+
+
+\end{document}
