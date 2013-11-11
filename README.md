@@ -21,10 +21,22 @@ nn = [
     2 2 1 1;
     1 1 1 1;
 ];
-If you want to change one structure just change a row.
+If you want to change one structure just change a row. We enter the model 
+to compare and *vuala!*:
 ```matlab
 >> compare_structures
+signal(gate/step/seno/rampa): seno
+...
 ```
+
+To validate all the identified models against a GATE input. Running the 
+script we have to enter the ARMAX parameters.
+```matlab
+>> gate_for_all_identified_models
+ARMAX(na,nb,nc,nk): [2 2 1 1]
+....
+```
+
 
 MATLAB GUIDE
 ------------
@@ -33,12 +45,28 @@ MATLAB GUIDE
 >> ident('matlab_ident')
 ```
 
-LABVIEW WORKBENCH
------------------
-The data is generated on the file:
+LABVIEW WORKBENCH(labview/workbench)
+------------------------------------
+The data is generated on the directory:
 ```
 data/labview_sim_data
 ```
+
+To visualize the data you have to run:
+```
+labview/ident
+```
+
+LABVIEW COMMANDS(labview/armax)
+-------------------------------
+To visualize the data you have to run:
+```
+labview/armax
+```
+
+
+**Notice** that to run all the labview files. First you need to change the 
+absolute paths to the ones that belong you.
 
 
 
