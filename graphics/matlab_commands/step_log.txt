@@ -1,3 +1,9 @@
+signal(gate/step/seno/rampa): step
+
+ans =
+
+step
+
 # de muestras
    300
 
@@ -124,5 +130,47 @@ Gs =
     -0.9245 s + 33.8
   ---------------------
   s^2 + 6.637 s + 53.92
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(1, 1, 1, 1)
+===========================================================
+D =
+ 
+    0.051
+  ---------
+  z - 0.921
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 0.921 z^-1                                   
+                                                          
+  B(z) = 0.051 z^-1                                       
+                                                          
+  C(z) = 1 + 0.5611 z^-1                                  
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=1   nb=1   nc=1   nk=1
+   Number of free coefficients: 3
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 97.18% (prediction focus) 
+FPE: 6.912e-05, MSE: 6.707e-05                    
+
+Gs =
+ 
+    1.771
+  ---------
+  s + 2.744
  
 Continuous-time transfer function.

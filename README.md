@@ -33,4 +33,12 @@ MATLAB GUIDE
 >> ident('matlab_ident')
 ```
 
+LABVIEW WORKBENCH
+-----------------
+The data generated is on the file:
+```
+data/labview_sim_data
+```
+
+
 

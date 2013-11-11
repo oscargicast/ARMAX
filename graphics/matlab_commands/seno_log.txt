@@ -1,3 +1,9 @@
+signal(gate/step/seno/rampa): seno
+
+ans =
+
+seno
+
 # de muestras
    300
 
@@ -42,7 +48,7 @@ Warning: The model order was increased to handle real negative poles.
   In SystemArray>SystemArray.d2c_ at 449
   In tf.tf>tf.d2c_ at 768
   In DynamicSystem.d2c at 99
-  In compare_structures at 104 
+  In compare_structures at 110 
 
 Gs =
  
@@ -133,5 +139,47 @@ Gs =
     -1.595 s + 41.26
   ---------------------
   s^2 + 8.403 s + 66.02
+ 
+Continuous-time transfer function.
+
+
+
+					 ARMAX(1, 1, 1, 1)
+===========================================================
+D =
+ 
+    0.0906
+  ----------
+  z - 0.8561
+ 
+Sample time: 0.03 seconds
+Discrete-time transfer function.
+
+
+th =
+Discrete-time ARMAX model:  A(z)y(t) = B(z)u(t) + C(z)e(t)
+  A(z) = 1 - 0.8561 z^-1                                  
+                                                          
+  B(z) = 0.0906 z^-1                                      
+                                                          
+  C(z) = 1 + 0.563 z^-1                                   
+                                                          
+Sample time: 0.03 seconds
+  
+Parameterization:
+   Polynomial orders:   na=1   nb=1   nc=1   nk=1
+   Number of free coefficients: 3
+   Use "polydata", "getpvec", "getcov" for parameters and their uncertainties.
+
+Status:                                           
+Estimated using ARMAX on time domain data "idata".
+Fit to estimation data: 97.92% (prediction focus) 
+FPE: 7.509e-05, MSE: 7.548e-05                    
+
+Gs =
+ 
+   3.261
+  --------
+  s + 5.18
  
 Continuous-time transfer function.
