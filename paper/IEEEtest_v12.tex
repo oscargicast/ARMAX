@@ -1,0 +1,457 @@
+%%
+%% IEEEtest.tex
+%% (file is named IEEEtest_v12.tex for distribution purposes)
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+%% Version 1.2 (7/27/2001) (IEEE release)
+%% by Michael Shell
+%% mshell@ece.gatech.edu
+%%
+%% This file demonstrates some problems found in the older IEEEtran.cls
+%% files and serves as a test of usage. It should compile under older
+%% as well as recent versions of IEEEtran.cls.
+%%
+%%**********************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either
+%% expressed or implied; without even the implied warranty of 
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code
+%% be liable for any damages or losses, including, but not limited to,
+%% incidental, consequential, or any other damages, resulting from the
+%% use or misuse of any information contained here.
+%% 
+%% All statements made here are the opinions of their respective
+%% authors and are not necessarily endorsed by the IEEE.
+%% 
+%% This code is distributed under the Perl Artistic License 
+%% ( http://language.perl.com/misc/Artistic.html ) 
+%% and may be freely used, distributed and modified.
+%% Please retain the contribution notices and credits.
+%% 
+%% Changes should be indicated by updating the version number in the
+%% filename, i.e., "IEEEtest_v13.tex", as well as documented in the source.
+%%  
+%% Copyright 2000,2001 by Michael David Shell
+%%**********************************************************************
+%
+%%**********************************************************************
+%%
+%%
+%% V1.2 Changes (July 27, 2001):
+%% 
+%% 1. minor change in the backward compatibility code block
+%%    to encompass the new optional argument in the biography
+%%    environment of IEEEtran.cls version 1.5 and later.
+%%    V1.1 used \CMPARstart where it should have used \PARstart.
+%%
+%%
+%%*****
+%%
+%%
+%% V1.1 Changes (March 15, 2001):
+%% 
+%% 1. Fixed incorrect comments that demonstrated how to revert
+%%    back to Computer Modern fonts.
+%%    
+%% 2. Fixed a bug which would cause LaTeX compilation to hang
+%%    if the user tried to define \PARstart in terms of
+%%    \CMPARstart under the old (pre V1.3) IEEEtran.cls
+%%    
+%% 3. added \newif\ifcenterfigcaptions to compatibility code block
+%%    (this flag is new to IEEEtran.cls V1.4)
+%% 
+%% Neither bug would affect the operation of an unmodified 
+%% IEEEtest_v10.tex.
+%% 
+%% 
+%%        *******   dvips note   *******  
+%% 
+%% Some LaTeX distributions have dvips configuration files (config.pdf)
+%% which assume that the user will be working only with Computer Modern 
+%% fonts. These configuration files remap certain character positions via 
+%% the use of the dvips -G1 option (older versions of dvips may not have a
+%% -Gx option). If this remapping is done to a document that contains other
+%% fonts, such as Times, a problem will develop in the PostScript or PDF 
+%% output. One symptom will be that the ligature "fi" will appear as the
+%% British pound symbol.
+%%    The dvips -G1 option should be used ONLY if the document is ENTIRELY 
+%% in Computer Modern fonts. In all other cases, the -G0 option should be 
+%% used.
+%%    In particular, in MikTeX 2.0, you will have to use:
+%% dvips -Ppdf -G0 <filename>
+%% instead of:
+%% dvips -Ppdf <filename>
+%% if your document has any non Computer Modern fonts. This issue is not
+%% specific to IEEEtran.cls and is applicable to all LaTeX documents.
+%%             
+%% Thanks to K. Sivakumar, A. Goreham, and K. Lee 
+%% for identifying the problem and providing a solution.
+%% 
+%% 
+%%*****
+%%  
+%% V1.0 was the initial release on January 30, 2001.
+%%       
+%%**********************************************************************  
+%
+%
+% Compile with the old and then with the new IEEEtran.cls
+% and see the difference.
+% Leave the [10pt,twocolumn] options as they are - this
+% test depends on controlled spacing.
+
+\documentclass[10pt,twocolumn]{IEEEtran}
+% to specify a filename, can use:
+%\documentclass[10pt,twocolumn]{./IEEEtran_v15}
+
+% I didn't like list-s
+\hyphenation{lists}
+
+% We need to obtain a command to tell us if a command has
+% been previously defined so that we can determine which
+% IEEEtran.cls is running. The \makeatletter stuff provides
+% a way to "get at" the internal command \@ifundefined
+% since it contains the @ character
+\makeatletter
+\def\ifundefined{\@ifundefined}
+\makeatother
+
+% V1.1 change: The font change commands have to be located
+% in the preamble before the title or author is declared.
+% If you uncomment these, you may also want to uncomment
+% the redefinition of \PARstart around line 258 so that
+% the big first letter is in the same font as the rest of
+% the text.
+% Here is how you can go back to the Computer Modern fonts
+% if you wish:
+%\renewcommand{\sfdefault}{cmss}
+%\renewcommand{\rmdefault}{cmr}
+%\renewcommand{\ttdefault}{cmtt}
+
+
+\begin{document}
+
+
+\title{A Test for IEEEtran.cls}
+
+\author{Michael Shell\thanks{M. Shell is a Ph.D. student at the
+School of Electrical and Computer Engineering
+of the Georgia Institute of Technology,
+Atlanta, Georgia, USA ~(email: mshell@ece.gatech.edu)}}
+
+% The major version number of the class file will not
+% be defined with the old IEEEtran.cls. So, we can use this fact
+% to determine if we are running the old or the new class.
+\ifundefined{IEEEtransversionmajor}{%
+   % This block will be executed only if we are using the old
+   % class. All we do is to make sure the V1.3 lengths and commands
+   % actually exist so the code won't choke when it
+   % doesn't find them.
+   
+   % This file doesn't need most of these definitions.
+   % However, we'll provide them all in case somebody
+   % wants to see what should be executed when compiling
+   % a V1.3 or later IEEEtran.cls .tex file with a pre V1.3
+   % IEEEtran.cls class file. In such a case, all you have to
+   % do is copy this block to the start of your code. 
+   % However, it won't fix any bugs in the old IEEEtran.cls!
+   %
+   % **** BACKWARD COMPATIBILITY CODE BLOCK START ****   
+   \newlength{\IEEEilabelindent}
+   \newlength{\IEEEilabelindentA}
+   \newlength{\IEEEilabelindentB}
+   \newlength{\IEEEelabelindent}
+   \newlength{\IEEEdlabelindent}
+   \newlength{\labelindent}
+   \newlength{\IEEEiednormlabelsep}
+   \newlength{\IEEEiedmathlabelsep}
+   \newlength{\IEEEiedtopsep}
+
+   \providecommand{\IEEElabelindentfactori}{1.0}
+   \providecommand{\IEEElabelindentfactorii}{0.75}
+   \providecommand{\IEEElabelindentfactoriii}{0.0}
+   \providecommand{\IEEElabelindentfactoriv}{0.0}
+   \providecommand{\IEEElabelindentfactorv}{0.0}
+   \providecommand{\IEEElabelindentfactorvi}{0.0}
+   \providecommand{\labelindentfactor}{1.0}
+   
+   \providecommand{\iedlistdecl}{\relax}
+   \providecommand{\calcleftmargin}[1]{
+                   \setlength{\leftmargin}{#1}
+                   \addtolength{\leftmargin}{\labelwidth}
+                   \addtolength{\leftmargin}{\labelsep}}
+   \providecommand{\setlabelwidth}[1]{
+                   \settowidth{\labelwidth}{#1}} 
+   \providecommand{\usemathlabelsep}{\relax}
+   \providecommand{\iedlabeljustifyl}{\relax}
+   \providecommand{\iedlabeljustifyc}{\relax}
+   \providecommand{\iedlabeljustifyr}{\relax}
+ 
+   \newif\ifnocalcleftmargin
+   \nocalcleftmarginfalse
+
+   \newif\ifnolabelindentfactor
+   \nolabelindentfactorfalse
+   
+   % in V1.4 of IEEEtran.cls
+   \newif\ifcenterfigcaptions
+   \centerfigcaptionsfalse
+   
+   % we need to provide the old IED environments
+   % with a bogus optional argument
+   \let\OLDitemize\itemize
+   \let\OLDenumerate\enumerate
+   \let\OLDdescription\description
+   
+   \renewcommand{\itemize}[1][\relax]{\OLDitemize}
+   \renewcommand{\enumerate}[1][\relax]{\OLDenumerate}
+   \renewcommand{\description}[1][\relax]{\OLDdescription}
+
+   \providecommand{\pubid}[1]{\relax}
+   \providecommand{\pubidadjcol}{\relax}
+   \providecommand{\specialpapernotice}[1]{\relax}
+   \providecommand{\overrideIEEEmargins}{\relax}
+   
+   % V1.1 change: use \let instead of \providecommand
+   % This prevents LaTeX from hanging if the user ever
+   % tried to redefine \PARstart in terms of \CMPARstart 
+   \let\CMPARstart\PARstart 
+   
+   \let\OLDappendix\appendix
+   \renewcommand{\appendix}[1][\relax]{\OLDappendix}
+   
+   \newif\ifuseRomanappendices
+   \useRomanappendicestrue
+   
+   % V1.2 change: handle the optional biography environment argument
+   % (the photo specifier) provided by IEEEtran V1.5 and later.
+   % This is tricky because, under the new biography, the SECOND
+   % argument is the non-optional one (the biography text).
+   \let\OLDbiography\biography
+   \let\OLDendbiography\endbiography
+   \renewcommand{\biography}[2][\relax]{\OLDbiography{#2}}
+   \renewcommand{\endbiography}{\OLDendbiography}
+   % **** BACKWARD COMPATIBILITY CODE BLOCK END ****
+   
+   % alter the header to show we are using the older class
+   \markboth{A Test for IEEEtran.cls--- {\tiny \bfseries
+   [Running Older Class]}}{Shell: A Test for IEEEtran.cls}}{
+   % END IF OLDER CLASS 
+  
+   % This block will be executed only if we are running 
+   % the enhanced class
+   % alter the header to show we are using the enhanced class
+   \markboth{A Test for IEEEtran.cls--- {\tiny \bfseries
+   [Running Enhanced Class
+    V\IEEEtransversionmajor.\IEEEtransversionminor]}}%
+   {Shell: A Test for IEEEtran.cls}}
+% end of conditional
+
+
+% Uncomment this line to render the big first letter in
+% Computer Modern font. 
+%\renewcommand{\PARstart}[2]{\CMPARstart{#1}{#2}}
+% V1.1 change: This would hang if using the older IEEEtran.cls
+% in IEEEtest V1.0, it is OK now.
+%
+%
+% Here's how you would do invited papers:
+%\specialpapernotice{(Invited Paper)}
+% If you are binding copies of work generated with IEEEtran.cls,
+% you may want to try:
+%\overrideIEEEmargins
+% These commands work OK here even though they are not in the preamble.
+%(I wanted to put them after the backward compatibility code)
+
+
+\maketitle
+% here's how you get a publisher's ID mark with the new
+% IEEEtran.cls.  If you want to use it, don't forget to
+% also uncomment the \pubidadjcol command (which must be
+% executed in the second text column) around line 434 below
+%\pubid{0000--0000/00\$00.00~\copyright~2001 IEEE}
+
+\begin{abstract}
+This file is designed to demonstrate the problems with the
+IEEEtran.cls class file which is currently
+distributed (January 2001) by the IEEE. 
+It is hoped that what you see here will convince you to 
+switch to the version modified by Michael Shell and
+Juergen von Hagen.
+\end{abstract}
+
+% no need for this single page document
+% you may have to move \pubidadjcol (if used) if
+% these are enabled
+%\listoffigures
+%\listoftables
+%\tableofcontents
+
+\section{Introduction}
+% in V1.1, I made a mistake here by using \CMPARstart
+\PARstart{H}{ere} is a little test for your IEEEtran class. IEEE
+uses Times Roman font for \textit{Transactions} papers.
+
+% Watch out to always have a blank line to end the paragraph
+% after your \PARstart text as \PARstart can "swallow" a \begin{}.
+% Comments don't count as blank lines!
+\section{Itemized and Enumerated List Bugs}
+Now a test of the itemized list (hrules added):
+\vspace{0.4ex}\hrule
+\begin{itemize}
+\item The first characters of the text in every line of all the items
+should line up nicely. This should be true even for long items
+like this one that span more than one line. The lines should
+{\bfseries not} be under the bullets!
+\item Furthermore, the bullets should be slightly indented from the
+main text above and below the list.
+\item IEEE's demo file, ``\textit{Using the Document Class
+IEEEtran.cls}" by Gerry Murray and Silvano Balemi, shows no
+indention under the older IEEEtran.cls.
+\item Yet, IEEE publications do use indention with itemized lists.
+\end{itemize}
+\hrule\vspace{0.4ex}
+There should also be a very small padding space ($\approx$0.3ex)
+above and below the list. However, this may be difficult to notice.
+\par The same problems occur with enumerated lists.
+\section{Math Font Woes}
+
+A command like: \begin{verbatim}$A\mathbf{B}B$\end{verbatim}
+should produce $A{\mathbf{B}}B$ with only the first ``B" being bold\hfill\\
+Here is what your system produces: $A\mathbf{B}B$ \hfill\\
+Is it correct for you? The last ``B" should not be bold.\hfill\\
+The previous hack for this problem was to use the command:
+\begin{verbatim}$A{\mathbf{B}}B$\end{verbatim}
+which on your system yields: $A{\mathbf{B}}B$
+
+% note that if you were to do something like this AFTER
+% an appendix, then this should be a \section* command
+\section{Reference Craziness-   discussion at end}
+
+\begin{thebibliography}{11}
+% Note the sample label "11" in thebibliography
+% This is like the new IEEEtran class'
+% \begin{enumerate}[\setlabelwidth{11}]
+\bibitem{knuth}
+D.~E. Knuth, {\em The Art of Computer Programming}.
+\newblock Addison-Wesley, 1998.
+
+\bibitem{nielsen2000}
+T.~Nielsen {\em et al.}, ``3.28 Tb/s Transmission Over 3$\times$100 km of
+  Nonzero-Dispersion Fiber Using Dual C- and L-Band Distributed Raman
+  Amplification,'' {\em IEEE Photonics Technology Letters}, Vol.~12,
+  pp.~1079--1081, Aug. 2000.
+
+\bibitem{shell97}
+M.~Shell, M.~D. Vaughn, L.~Dubertrand, D.~J. Blumenthal, P.-J. Rigole, and
+  S.~Nilsson, ``Multinode Demonstration of a Multihop Wavelength-Routed
+  All-Optical Packet-Switched Network,'' in {\em Optical Fiber Communications
+  Conference}, Dallas, TX, pp.~91--92, Feb. 1997.
+
+\bibitem{mccoy_phd}
+K.~A. McCoy, {\em A Recirculating Optical Loop for Short-Term Data Storage}.
+\newblock Ph.D.\ thesis, Georgia Institute of Technology, 1996.
+
+\bibitem{bergstrom99}
+P.~D. {Bergstrom Jr.}, M.~A. Ingram, A.~J. Vernon, J.~L.~A. Hughes, and
+  P.~Tetali, ``A Markov Chain Model for an Optical Shared-Memory Packet
+  Switch,'' {\em IEEE Transactions on Communications}, Vol.~47, pp.~1593--1603,
+  Oct. 1999.
+
+\bibitem{puckett}
+D.~L. Puckett, and P.~Dibble {\em The Complete Rainbow Guide to OS-9
+Level II, Volume I: A Beginners Guide to Windows}.
+\newblock Falsoft Inc., 1987.
+
+\bibitem{green96}
+P.~E. {Green Jr.}, ``Optical Networking Update,'' {\em IEEE Journal on Selected
+  Areas in Communications}, Vol.~14, pp.~764--779, June 1996.
+
+\bibitem{kurzweil}
+R.~Kurzweil, {\em The Age of Spiritual Machines}.
+\newblock Viking, 1999.
+
+\bibitem{kopka}
+H.~Kopka and P.~W. Daly, {\em A Guide to \LaTeXe}.
+\newblock Addison-Wesley, 1995.
+
+\bibitem{williams}
+W.~E. Williams, {\em Do the Right Thing}.
+\newblock Hoover Institution Press, Stanford University, 1995.
+
+\bibitem{lancaster}
+D.~Lancaster, {\em Active Filter Cookbook}.
+\newblock Synergetics, 1995.
+
+
+\end{thebibliography}
+\vspace{1ex}\hrule\vspace{3ex}
+
+There may be several flaws in the references above:
+% here we have to set the label width to our longest
+% label, which happens to be "Second:"
+% TIP: If you want to see what a variable's width is, you
+% can use the TeX command \showthe\width-variable to 
+% display it on the screen during compilation. Of course, 
+% you can use \settowidth{\width-variable}{label-text}
+% to set a width variable to the width of given text. 
+% (This might be helpful to know when you need to find out
+% which label is the widest) 
+\begin{description}[\setlabelwidth{Second:}]
+\item[First:] You may have gotten underfull hbox warnings
+for bibliography entries one through nine.
+\item[Second:] Note the alignment of the labels [10] and [11] with
+respect to [9]. The ones digits should all be vertically aligned.
+It is not correct to align by the ['s. It is the ]'s which should line
+up.
+% IEEE almost never plays games with item line spacing,
+% but sometimes you will see double spaced items
+% here's how you can skip a line between items:
+% 1. You can put \setlength{\itemsep}{1.5ex} in the
+%    list control argument above or 
+% 2. You can put in bogus items   
+%    \item \mbox{}
+% 3. for more flexible control (not recommended for IEEE work):
+%    \item \vspace*{-1.0ex}
+%    negative heights subtract from the standard line height
+%    positives add
+\item[Lastly:] Watch reference number three. IEEE almost never breaks a
+reference. The modified IEEEtran.cls discourages \LaTeX\ from doing this.
+As a result, with the new version, some documents might produce an underfull
+vbox warning which indicates that the spacing between two sections is a
+bit larger than normal. However, this is typically the way it will be done in a real IEEE
+publication.
+\end{description}
+
+
+
+% needed when using the publisher's ID mark
+%\pubidadjcol
+
+The description lists are where most IEEEtrans.cls have the biggest
+problems. The item text should be block aligned and to the right of the
+labels. Problems here make it a real nightmare to get nomenclature lists 
+into decent form. The new IEEEtran.cls solves this problem and allows the 
+user a way to specify the width of the longest label.
+Labels are not necessarily \textit{italic} shape in IEEE publications.
+
+\subsubsection{Note}{\ttfamily $\backslash$subsubsection} headings like this,
+which one often sees in \textit{IEEE Transactions}, can falsely 
+appear to be enumerated lists. One can always identify lists by the fact that 
+the item text is block indented from the left. Also, sometimes the first 
+word(s) of each list item are italicized.
+
+\section{Conclusion}
+% change our conclusion based on which class we run ;)
+\ifundefined{IEEEtransversionmajor}{
+I certainly hope that this draws some attention to the little 
+problems of most IEEEtran.cls files today.}
+{Tis better ain't it!? ;)}
+
+
+\end{document}
+
+% END of IEEEtest.tex ************
+
+
