@@ -45,12 +45,28 @@ MATLAB GUIDE
 >> ident('matlab_ident')
 ```
 
-LABVIEW WORKBENCH
------------------
-The data is generated on the file:
+LABVIEW WORKBENCH(labview/workbench)
+------------------------------------
+The data is generated on the directory:
 ```
 data/labview_sim_data
 ```
+
+To visualize the data you have to run:
+```
+labview/ident
+```
+
+LABVIEW COMMANDS(labview/armax)
+-------------------------------
+To visualize the data you have to run:
+```
+labview/armax
+```
+
+
+**Notice** that to run all the labview files. First you need to change the 
+absolute paths to the ones that belong you.
 
 
 
